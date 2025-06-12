@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MatON – Prywatność na kliknięcie</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
       margin: 0;
-      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f9f9f9;
       color: #333;
-      text-align: center;
     }
     header {
-      background: #000;
-      color: #fff;
-      padding: 60px 20px;
+      background: #ffffff;
+      padding: 10px 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    h1 { margin: 0; font-size: 2.5em; }
-    p { font-size: 1.2em; }
-    section {
+    header img {
+      max-width: 180px;
+      height: auto;
+    }
+    .contact-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    .contact-bar div {
+      margin: 5px 15px;
+    }
+    .hero {
+      background: #fff;
+      text-align: center;
       padding: 40px 20px;
     }
+    .hero h1 {
+      color: #007aff;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.6;
+    }
     footer {
+      text-align: center;
       background: #111;
       color: #bbb;
-      padding: 20px;
-      font-size: 0.9em;
+      padding: 15px;
+      font-size: 13px;
     }
     a {
       color: #007acc;
@@ -38,33 +64,25 @@
 <body>
 
 <header>
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px;">
-    <div style="text-align: left;">
-      <h1 style="margin: 0;">MatON</h1>
-      <p style="margin: 5px 0;">Prywatność na kliknięcie</p>
-    </div>
-    <img src="logo.png" alt="MatON logo" style="max-width: 120px; height: auto;">
+  <div class="contact-bar">
+    <div>📞 +48 517 149 045</div>
+    <div>📧 <a href="mailto:kontakt@maton.pl">kontakt@maton.pl</a></div>
+    <div>📍 Cała Polska</div>
   </div>
+  <img src="logo.png" alt="MatON logo" />
 </header>
 
-<section>
-  <h2>O nas</h2>
-  <p>MatON to nowoczesna odpowiedź na potrzebę prywatności – bez zasłon, bez rolet, bez kompromisów.
-
-Specjalizujemy się w sprzedaży i montażu inteligentnych folii PDLC, które jednym kliknięciem zmieniają przezroczyste szkło w matowe. Rozwiązanie idealne do biur, gabinetów, sal konferencyjnych, łazienek czy mieszkań z widokiem… który nie zawsze działa w dwie strony 😉
-
-Działamy na terenie całej Polski. Sami zajmujemy się montażem i doborem technologii – doradzamy od A do Z.
-
-Naszą misją jest łączenie estetyki, funkcjonalności i wygody. Bo prywatność to nie luksus – to standard, który możesz mieć na kliknięcie.</p>
-</section>
-
-<section>
-  <h2>Kontakt</h2>
-  <p>Napisz do nas: <a href="mailto:matonfoil@gmail.com">kontakt@maton.pl</a></p>
+<section class="hero">
+  <h1>Folia elektryczna na okno</h1>
+  <p>
+    Zastosowanie inteligentnej folii ciekłokrystalicznej MatON sprawia, że możesz zarządzać prywatnością według własnych potrzeb. 
+    Folia MatON zapewnia doskonałą przejrzystość i elegancki wygląd – po aplikacji pozostaje niemal niewidoczna, a jednym kliknięciem staje się matowa. 
+    To idealne rozwiązanie do biur, domów, gabinetów i nowoczesnych przestrzeni.
+  </p>
 </section>
 
 <footer>
-  &copy; 2025 MatON – prywatność na kliknięcie
+  &copy; 2025 MatON – Prywatność na kliknięcie
 </footer>
 
 </body>
