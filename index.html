@@ -11,16 +11,6 @@
       background: #f9f9f9;
       color: #333;
     }
-    header {
-      background: #ffffff;
-      padding: 10px 20px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    header img {
-      max-width: 180px;
-      height: auto;
-    }
     .contact-bar {
       display: flex;
       justify-content: center;
@@ -28,9 +18,40 @@
       font-size: 14px;
       color: #444;
       margin-bottom: 10px;
+      padding-top: 10px;
     }
     .contact-bar div {
       margin: 5px 15px;
+    }
+    header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background: #ffffff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      gap: 20px;
+    }
+    .logo {
+      max-width: 180px;
+      height: auto;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: #fff;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #007acc;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     .hero {
       background: #fff;
@@ -59,26 +80,43 @@
       color: #007acc;
       text-decoration: none;
     }
+
+    @media screen and (max-width: 1024px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .logo {
+        max-width: 120px;
+        margin-top: 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
+<div class="contact-bar">
+  <div>📞 +48 517 149 045</div>
+  <div>📧 <a href="mailto:kontakt@maton.pl">kontakt@maton.pl</a></div>
+  <div>📍 Cała Polska</div>
+</div>
+
 <header>
-  <div class="contact-bar">
-    <div>📞 +48 517 149 045</div>
-    <div>📧 <a href="mailto:kontakt@maton.pl">kontakt@maton.pl</a></div>
-    <div>📍 Cała Polska</div>
+  <img src="logo.png" alt="MatON logo" class="logo">
+  <div>
+    <h1 style="margin: 0; font-size: 22px;">MatON</h1>
+    <p style="margin: 5px 0;">Prywatność na kliknięcie</p>
   </div>
-  <img src="logo.png" alt="MatON logo" />
 </header>
 
-<nav style="display: flex; justify-content: center; gap: 20px; padding: 10px 0; background: #fff;">
-  <a href="index.html" style="text-decoration: none; color: #007acc; font-weight: bold;">Strona główna</a>
-  <a href="o-nas.html" style="text-decoration: none; color: #007acc; font-weight: bold;">O nas</a>
-  <a href="oferta.html" style="text-decoration: none; color: #007acc; font-weight: bold;">Oferta</a>
-  <a href="kontakt.html" style="text-decoration: none; color: #007acc; font-weight: bold;">Kontakt</a>
+<nav>
+  <a href="index.html">Strona główna</a>
+  <a href="o-nas.html">O nas</a>
+  <a href="oferta.html">Oferta</a>
+  <a href="kontakt.html">Kontakt</a>
 </nav>
-  
+
 <section class="hero">
   <h1>Folia elektryczna na okno</h1>
   <p>
