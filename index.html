@@ -1,26 +1,1004 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MatON – Coming Soon</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MatON Foil – inteligentna folia PDLC, która zmienia szkło z przezroczystego w mleczne. Prywatność na kliknięcie. Montaż bez wymiany szyb." />
+  <meta name="theme-color" content="#113D53" />
+
+  <title>MatON Foil – prywatność na kliknięcie</title>
+
+  <!-- Social / OG -->
+  <meta property="og:title" content="MatON Foil – prywatność na kliknięcie" />
+  <meta property="og:description" content="Inteligentna folia PDLC: szkło przezroczyste ↔ mleczne. Montaż bez wymiany szyb. Wycena i konsultacja." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    html, body {
-      margin: 0;
+    :root{
+      --accent:#F8C954;
+      --navy:#113D53;
+      --bg:#FFFFFF;
+      --muted:#F2F2F2;
+      --text:#1A1A1A;
+      --shadow: 0 14px 40px rgba(17, 61, 83, 0.10);
+      --shadow-soft: 0 10px 24px rgba(0,0,0,0.08);
+      --radius: 18px;
+      --radius-lg: 26px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display:block; }
+
+    /* Layout helpers */
+    .container{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    .section{ padding: 84px 0; }
+    .section.compact{ padding: 64px 0; }
+    .kicker{
+      color: var(--navy);
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: .9;
+      margin: 0 0 10px;
+    }
+    h1, h2, h3{ margin: 0; letter-spacing: -0.02em; }
+    h1{ font-size: clamp(34px, 4.6vw, 58px); line-height: 1.05; }
+    h2{ font-size: clamp(26px, 3.2vw, 40px); line-height: 1.12; }
+    h3{ font-size: 18px; line-height: 1.25; }
+    p{ margin: 12px 0 0; color: rgba(26,26,26,.88); }
+
+    .muted{ color: rgba(26,26,26,.68); }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(248,201,84,.16);
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 13px;
+      border: 1px solid rgba(248,201,84,.35);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(248,201,84,.22);
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,61,83,.10);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      height: 68px;
+      gap: 16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .brand img{
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.10);
+    }
+    nav ul{
+      list-style:none; padding:0; margin:0;
+      display:flex; gap: 18px;
+      align-items:center;
+    }
+    nav a{
+      font-weight: 600;
+      font-size: 13px;
+      color: rgba(17,61,83,.88);
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    nav a:hover{ background: rgba(17,61,83,.06); }
+
+    .cta{
+      display:flex; align-items:center; gap:10px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(17,61,83,.18);
+      background: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-soft); }
+    .btn.primary{
+      border-color: rgba(248,201,84,.55);
+      background: var(--accent);
+      color: #1A1A1A;
+    }
+    .btn.primary:hover{ box-shadow: 0 16px 30px rgba(248,201,84,.28); }
+
+    .hamburger{
+      display:none;
+      border: 1px solid rgba(17,61,83,.18);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background:#fff;
+      font-weight:700;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 74px 0 36px;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(248,201,84,.24), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(17,61,83,.12), transparent 55%);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      align-items: center;
+    }
+    .hero p{ font-size: 16px; max-width: 54ch; }
+    .hero-actions{
+      margin-top: 20px;
+      display:flex; gap: 12px; flex-wrap: wrap;
+    }
+    .trust{
+      margin-top: 22px;
+      display:flex; gap: 10px; flex-wrap: wrap;
+    }
+
+    /* Demo card */
+    .demo{
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.70));
+      border: 1px solid rgba(17,61,83,.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .demo-top{
+      padding: 18px 18px 0;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .toggle{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 13px;
+    }
+    .switch{
+      width: 52px; height: 30px;
+      background: rgba(17,61,83,.12);
+      border: 1px solid rgba(17,61,83,.18);
+      border-radius: 999px;
+      position: relative;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+    .knob{
+      width: 24px; height: 24px;
+      background: #fff;
+      border-radius: 50%;
+      position:absolute;
+      top: 2px; left: 2px;
+      box-shadow: 0 10px 18px rgba(0,0,0,.18);
+      transition: left .16s ease;
+    }
+    .switch.on{
+      background: rgba(248,201,84,.42);
+      border-color: rgba(248,201,84,.70);
+    }
+    .switch.on .knob{ left: 26px; }
+
+    .glass-demo{
+      position: relative;
+      height: 280px;
+      margin: 12px 18px 18px;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(17,61,83,.12);
+      background:
+        radial-gradient(600px 260px at 35% 30%, rgba(255,255,255,.95), rgba(242,242,242,.9)),
+        linear-gradient(135deg, rgba(17,61,83,.08), rgba(248,201,84,.10));
+    }
+    /* “Biuro” zrobione z warstw – bez obrazków */
+    .scene{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.55)),
+        repeating-linear-gradient(90deg, rgba(17,61,83,.08) 0 2px, transparent 2px 86px),
+        radial-gradient(500px 220px at 70% 55%, rgba(248,201,84,.18), transparent 60%);
+    }
+    .glass{
+      position:absolute;
+      inset: 42px 42px 42px 42px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.26);
+      border: 1px solid rgba(17,61,83,.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
+    }
+    .glass::after{
+      content:"";
+      position:absolute; inset:0;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+      opacity: 1; /* default: OFF = mlecznie */
+      transition: opacity .18s ease;
+    }
+    .glass-demo.on .glass::after{ opacity: 0; } /* ON = przejrzyście */
+
+    .demo-caption{
+      padding: 0 18px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+      color: rgba(17,61,83,.84);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(17,61,83,.06);
+      border: 1px solid rgba(17,61,83,.10);
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    /* Grids */
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+    .grid-4{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(17,61,83,.10);
+      background: #fff;
+      box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      padding: 18px;
+    }
+    .card.soft{
+      background: linear-gradient(180deg, #fff, rgba(242,242,242,.55));
+    }
+    .card h3{ color: var(--navy); }
+    .icon{
+      width: 40px; height: 40px;
+      border-radius: 14px;
+      background: rgba(248,201,84,.22);
+      border: 1px solid rgba(248,201,84,.45);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom: 12px;
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .list{
+      margin: 14px 0 0;
       padding: 0;
-      height: 100%;
-      overflow: hidden;
+      list-style: none;
+      display:grid;
+      gap: 10px;
+    }
+    .list li{
+      display:flex; gap: 10px; align-items:flex-start;
+      color: rgba(26,26,26,.86);
+    }
+    .check{
+      width: 18px; height: 18px;
+      border-radius: 6px;
+      background: rgba(248,201,84,.38);
+      border: 1px solid rgba(248,201,84,.55);
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+
+    /* Before/After */
+    .ba{
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(17,61,83,.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
       background: #fff;
     }
-    img {
-      display: block;
+    .ba-top{
+      padding: 18px;
+      display:flex; align-items:center; justify-content:space-between; gap: 16px;
+      border-bottom: 1px solid rgba(17,61,83,.10);
+    }
+    .ba-stage{
+      position: relative;
+      height: 320px;
+      background:
+        radial-gradient(900px 420px at 20% 20%, rgba(248,201,84,.18), transparent 55%),
+        linear-gradient(135deg, rgba(17,61,83,.10), rgba(242,242,242,.75));
+    }
+    .ba-scene{
+      position:absolute; inset: 26px;
+      border-radius: 22px;
+      border: 1px solid rgba(17,61,83,.12);
+      overflow:hidden;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.55)),
+        repeating-linear-gradient(90deg, rgba(17,61,83,.08) 0 2px, transparent 2px 96px),
+        radial-gradient(520px 260px at 72% 60%, rgba(248,201,84,.18), transparent 62%);
+    }
+    .ba-overlay{
+      position:absolute; inset:0;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      opacity: 1; /* 1 = mlecznie */
+      pointer-events:none;
+    }
+    .ba-labels{
+      position:absolute;
+      left: 18px; right: 18px; bottom: 18px;
+      display:flex; justify-content:space-between; gap:10px;
+      font-weight: 800;
+      color: rgba(17,61,83,.90);
+      font-size: 13px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.7);
+    }
+    .range{
+      display:flex; align-items:center; gap:12px;
+      min-width: 260px;
+    }
+    input[type="range"]{
       width: 100%;
-      height: 100%;
-      object-fit: contain;
+      accent-color: var(--accent);
+    }
+
+    /* Process */
+    .timeline{
+      display:grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .step{
+      display:flex; gap: 14px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(17,61,83,.10);
+      background: #fff;
+    }
+    .num{
+      width: 34px; height: 34px;
+      border-radius: 14px;
+      background: rgba(17,61,83,.08);
+      border: 1px solid rgba(17,61,83,.14);
+      display:flex; align-items:center; justify-content:center;
+      font-weight: 900;
+      color: var(--navy);
+      flex: 0 0 auto;
+    }
+
+    /* FAQ */
+    details{
+      border-radius: 16px;
+      border: 1px solid rgba(17,61,83,.10);
+      background: #fff;
+      padding: 14px 16px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 800;
+      color: var(--navy);
+      list-style: none;
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .chev{
+      width: 26px; height: 26px;
+      border-radius: 10px;
+      border: 1px solid rgba(17,61,83,.12);
+      background: rgba(17,61,83,.06);
+      display:flex; align-items:center; justify-content:center;
+      flex: 0 0 auto;
+      transition: transform .12s ease;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 22px;
+      align-items:start;
+    }
+    .form{
+      display:grid;
+      gap: 10px;
+    }
+    label{ font-size: 13px; font-weight: 700; color: rgba(17,61,83,.9); }
+    input, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(17,61,83,.18);
+      background: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    input:focus, textarea:focus{
+      border-color: rgba(248,201,84,.85);
+      box-shadow: 0 0 0 4px rgba(248,201,84,.22);
+    }
+    textarea{ min-height: 110px; resize: vertical; }
+
+    .two{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .notice{
+      font-size: 12px;
+      color: rgba(26,26,26,.65);
+      margin-top: 10px;
+    }
+
+    footer{
+      padding: 28px 0;
+      border-top: 1px solid rgba(17,61,83,.10);
+      color: rgba(26,26,26,.68);
+      font-size: 13px;
+    }
+
+    /* Mobile */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-4{ grid-template-columns: 1fr 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      nav ul{ display:none; }
+      .hamburger{ display:inline-flex; }
+    }
+    @media (max-width: 520px){
+      .grid-4{ grid-template-columns: 1fr; }
+      .two{ grid-template-columns: 1fr; }
+      .range{ min-width: 0; width: 100%; }
+      .ba-top{ flex-direction: column; align-items:flex-start; }
     }
   </style>
 </head>
+
 <body>
-  <img src="coming-soon.jpeg" alt="Coming Soon MatON">
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="MatON Foil — strona główna">
+        <img src="logo.png" alt="MatON Foil logo">
+        <span>MatON Foil</span>
+      </a>
+
+      <nav aria-label="Nawigacja główna">
+        <ul>
+          <li><a href="#jak-dziala">Jak działa</a></li>
+          <li><a href="#korzysci">Korzyści</a></li>
+          <li><a href="#zastosowania">Zastosowania</a></li>
+          <li><a href="#specyfikacja">Specyfikacja</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="#kontakt">Umów konsultację</a>
+        <a class="btn primary" href="#kontakt">Wyceń montaż</a>
+        <button class="hamburger" id="menuBtn" aria-label="Pokaż menu">Menu</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="pill"><span class="dot"></span> MatON – prywatność na kliknięcie</div>
+          <h1 style="margin-top:14px;">Prywatność na kliknięcie.</h1>
+          <p>
+            Inteligentna folia PDLC, która zmienia szkło z przezroczystego w mleczne — wtedy, kiedy tego potrzebujesz.
+            Dla biur, coworków, gabinetów i domów.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#kontakt">Wyceń montaż</a>
+            <a class="btn" href="#before-after">Zobacz Before/After</a>
+          </div>
+
+          <div class="trust" aria-label="Najważniejsze cechy">
+            <span class="badge">Montaż bez wymiany szyb</span>
+            <span class="badge">Sterowanie 1 kliknięciem</span>
+            <span class="badge">Efekt premium</span>
+          </div>
+        </div>
+
+        <aside class="demo" aria-label="Demo działania folii PDLC">
+          <div class="demo-top">
+            <div>
+              <div class="kicker" style="margin:0;">Demo</div>
+              <div class="muted" style="margin-top:6px;font-size:13px;">
+                OFF = mlecznie • ON = przejrzyście
+              </div>
+            </div>
+
+            <div class="toggle">
+              <span id="demoState">OFF</span>
+              <div class="switch" id="demoSwitch" role="switch" aria-checked="false" tabindex="0">
+                <div class="knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-demo" id="glassDemo">
+            <div class="scene"></div>
+            <div class="glass" aria-hidden="true"></div>
+          </div>
+
+          <div class="demo-caption">
+            <span id="demoCaption">Tryb prywatności: mleczne szkło</span>
+            <span class="badge">PDLC</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CO TO JEST -->
+  <section class="section compact">
+    <div class="container">
+      <p class="kicker">Co to jest PDLC</p>
+      <h2>Szkło, które robi prywatność. Bez rolet.</h2>
+      <div class="grid-2">
+        <div class="card soft">
+          <h3>Jak to działa?</h3>
+          <p>
+            Folia PDLC wykorzystuje ciekłe kryształy. Gdy podasz napięcie — szkło staje się przejrzyste.
+            Gdy wyłączysz — rozprasza obraz i daje prywatność.
+          </p>
+          <ul class="list">
+            <li><span class="check"></span> Prywatność wizualna na żądanie</li>
+            <li><span class="check"></span> Światło zostaje, widoczność znika</li>
+            <li><span class="check"></span> Jedno kliknięcie zmienia wszystko</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Dla kogo?</h3>
+          <p>
+            Dla miejsc, gdzie szkło jest piękne, ale czasem potrzebujesz ciszy i prywatności:
+            sale spotkań, call roomy, gabinety i strefy premium.
+          </p>
+          <ul class="list">
+            <li><span class="check"></span> Coworkingi i biura</li>
+            <li><span class="check"></span> Gabinety medyczne / beauty</li>
+            <li><span class="check"></span> Domy i apartamenty</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAK DZIAŁA -->
+  <section id="jak-dziala" class="section">
+    <div class="container">
+      <p class="kicker">Jak działa</p>
+      <h2>Proste jak kliknięcie.</h2>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">1</div>
+          <h3>ON — przejrzyście</h3>
+          <p>Szkło jest transparentne, zachowujesz widok i lekkość wnętrza.</p>
+        </div>
+        <div class="card">
+          <div class="icon">2</div>
+          <h3>OFF — mlecznie</h3>
+          <p>Szkło rozprasza obraz. Prywatność wizualna natychmiast.</p>
+        </div>
+        <div class="card">
+          <div class="icon">3</div>
+          <h3>Sterowanie</h3>
+          <p>Pilot / włącznik ścienny / automatyka (opcjonalnie) — dobieramy do projektu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KORZYŚCI -->
+  <section id="korzysci" class="section" style="background: linear-gradient(180deg, #fff, rgba(242,242,242,.55));">
+    <div class="container">
+      <p class="kicker">Korzyści</p>
+      <h2>Więcej spokoju. Więcej estetyki.</h2>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">✦</div>
+          <h3>Prywatność natychmiast</h3>
+          <p>Bez zasłon i bez kompromisów — kiedy chcesz, tam gdzie chcesz.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⬚</div>
+          <h3>Premium look</h3>
+          <p>Nowoczesny efekt “wow”, który podnosi jakość przestrzeni.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⟡</div>
+          <h3>Montaż bez wymiany szyb</h3>
+          <p>Modernizacja istniejących przeszkleń, szybko i estetycznie.</p>
+        </div>
+        <div class="card">
+          <div class="icon">≋</div>
+          <h3>Minimalizm w środku</h3>
+          <p>Brak rolet = czystsze wnętrze i lepsze wrażenie.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Niski pobór mocy</h3>
+          <p>Typowo kilka W/m² w trybie ON — policzymy dla Twojego metrażu.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✓</div>
+          <h3>Kompleksowo</h3>
+          <p>Doradztwo, pomiar, dobór sterowania, montaż i wsparcie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZASTOSOWANIA -->
+  <section id="zastosowania" class="section">
+    <div class="container">
+      <p class="kicker">Zastosowania</p>
+      <h2>Zaprojektowane do miejsc, gdzie szkło ma sens.</h2>
+
+      <div class="grid-4">
+        <div class="card"><h3>Biura</h3><p class="muted">Sale konferencyjne, gabinety, strefy VIP.</p></div>
+        <div class="card"><h3>Coworking</h3><p class="muted">Call roomy, salki spotkań, prywatne strefy.</p></div>
+        <div class="card"><h3>Gabinety</h3><p class="muted">Medyczne, beauty, terapeutyczne.</p></div>
+        <div class="card"><h3>Dom</h3><p class="muted">Łazienki, przegrody, przeszklenia.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE/AFTER -->
+  <section id="before-after" class="section">
+    <div class="container">
+      <p class="kicker">Before / After</p>
+      <h2>Zobacz różnicę.</h2>
+
+      <div class="ba" aria-label="Porównanie transparentne vs mleczne">
+        <div class="ba-top">
+          <div>
+            <h3>Przesuń suwak</h3>
+            <p class="muted" style="margin-top:6px;">0% = przejrzyście • 100% = mlecznie</p>
+          </div>
+
+          <div class="range" aria-label="Suwak przejrzystości">
+            <span class="muted" style="font-weight:700;font-size:13px;">Transparent</span>
+            <input id="baRange" type="range" min="0" max="100" value="100" />
+            <span class="muted" style="font-weight:700;font-size:13px;">Mleczne</span>
+          </div>
+        </div>
+
+        <div class="ba-stage">
+          <div class="ba-scene">
+            <div class="ba-overlay" id="baOverlay" style="opacity:1;"></div>
+            <div class="ba-labels">
+              <span>ON</span>
+              <span>OFF</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="notice">
+        To jest demonstracja wizualna (bez zdjęć). Jeśli chcesz, podmienimy to na prawdziwe zdjęcia “przed/po” po pierwszej realizacji.
+      </p>
+    </div>
+  </section>
+
+  <!-- SPECYFIKACJA -->
+  <section id="specyfikacja" class="section" style="background: rgba(242,242,242,.55);">
+    <div class="container">
+      <p class="kicker">Specyfikacja</p>
+      <h2>Parametry, które robią różnicę.</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Najważniejsze</h3>
+          <ul class="list">
+            <li><span class="check"></span> Grubość folii: <b>0,4 mm</b></li>
+            <li><span class="check"></span> Zasilanie: <b>48V AC</b> (przez transformator)</li>
+            <li><span class="check"></span> Reakcja: <b>milisekundy</b></li>
+            <li><span class="check"></span> Pobór mocy: <b>&lt; 5 W/m²</b> (tryb ON)</li>
+            <li><span class="check"></span> Szerokość: do <b>2,15 m</b></li>
+            <li><span class="check"></span> Temperatura pracy: <b>-20°C do 80°C</b></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Trwałość</h3>
+          <ul class="list">
+            <li><span class="check"></span> Deklarowana trwałość: <b>&gt;10 lat</b></li>
+            <li><span class="check"></span> Przełączenia: <b>&gt;80 mln cykli</b></li>
+            <li><span class="check"></span> Gwarancja producenta: <b>2 lata</b></li>
+          </ul>
+          <p class="notice">
+            Parametry zależą od wersji folii i projektu. Dobór zasilania i sterowania ustalamy w wycenie.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCES -->
+  <section class="section">
+    <div class="container">
+      <p class="kicker">Proces</p>
+      <h2>Od pomiaru do “wow” — bez komplikacji.</h2>
+
+      <div class="timeline">
+        <div class="step"><div class="num">1</div><div><h3>Konsultacja</h3><p class="muted">Dobór rozwiązania do szkła i potrzeb.</p></div></div>
+        <div class="step"><div class="num">2</div><div><h3>Wycena</h3><p class="muted">Zakres, termin, elementy sterowania.</p></div></div>
+        <div class="step"><div class="num">3</div><div><h3>Przygotowanie</h3><p class="muted">Docięcie, okablowanie, osprzęt.</p></div></div>
+        <div class="step"><div class="num">4</div><div><h3>Montaż</h3><p class="muted">Sprawnie i czysto, bez wymiany szyb.</p></div></div>
+        <div class="step"><div class="num">5</div><div><h3>Test + instruktaż</h3><p class="muted">Pokaz działania i obsługi.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section" style="background: linear-gradient(180deg, #fff, rgba(242,242,242,.55));">
+    <div class="container">
+      <p class="kicker">FAQ</p>
+      <h2>Najczęstsze pytania.</h2>
+
+      <div style="margin-top:22px;">
+        <details>
+          <summary>1) Czy w trybie mlecznym wpada światło? <span class="chev">⌄</span></summary>
+          <p>Tak. Folia rozprasza obraz, ale przepuszcza światło — dzięki temu jest jasno, tylko bez widoczności.</p>
+        </details>
+        <details>
+          <summary>2) Czy widać cienie/sylwetki? <span class="chev">⌄</span></summary>
+          <p>Zwykle widać zarysy przy mocnym oświetleniu z jednej strony. Dobieramy rozwiązanie pod konkretną sytuację.</p>
+        </details>
+        <details>
+          <summary>3) Czy folia działa przy braku prądu? <span class="chev">⌄</span></summary>
+          <p>To zależy od konfiguracji. W wycenie ustalamy zachowanie “domyślne” i dobór sterowania.</p>
+        </details>
+        <details>
+          <summary>4) Ile prądu to zużywa? <span class="chev">⌄</span></summary>
+          <p>Zależnie od metrażu i trybu. Typowo pobór jest niski (rzędu kilku W/m² w trybie ON). Policzymy to w ofercie.</p>
+        </details>
+        <details>
+          <summary>5) Czy montujecie na istniejących szybach? <span class="chev">⌄</span></summary>
+          <p>Tak — w większości przypadków. Kluczowy jest stan szkła i dostęp do poprowadzenia zasilania.</p>
+        </details>
+        <details>
+          <summary>6) Jak to się czyści? <span class="chev">⌄</span></summary>
+          <p>Jak standardową szybę — miękka ściereczka i delikatne środki. Unikaj agresywnych rozpuszczalników.</p>
+        </details>
+        <details>
+          <summary>7) Czy można dociąć pod wymiar? <span class="chev">⌄</span></summary>
+          <p>Tak. Projektujemy pod konkretny wymiar i układ okablowania.</p>
+        </details>
+        <details>
+          <summary>8) Jak długo trwa montaż? <span class="chev">⌄</span></summary>
+          <p>Zależy od metrażu i dostępu. Małe realizacje często da się zrobić w 1 dzień.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="section">
+    <div class="container">
+      <p class="kicker">Kontakt</p>
+      <h2>Zróbmy to na Twoim szkle.</h2>
+
+      <div class="contact">
+        <div class="card">
+          <h3>MatON Foil</h3>
+          <p class="muted" style="margin-top:6px;">
+            Doradztwo, dostawa i montaż inteligentnej folii PDLC w Polsce.
+          </p>
+
+          <ul class="list" style="margin-top:16px;">
+            <li><span class="check"></span> Telefon: <b><a href="tel:+48517149045">517 149 045</a></b></li>
+            <li><span class="check"></span> E-mail: <b><a href="mailto:matonfoil@gmail.com">matonfoil@gmail.com</a></b></li>
+            <li><span class="check"></span> Strona: <b>maton.pl</b></li>
+          </ul>
+
+          <p class="notice">
+            Najszybciej wycenimy, jeśli podasz miasto, metraż szkła i dorzucisz 1–2 zdjęcia.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Szybka wycena</h3>
+          <p class="muted" style="margin-top:6px;">Wypełnij formularz — przygotujemy ofertę.</p>
+
+          <!-- Prosty formularz: otwiera maila z tematem i treścią -->
+          <form class="form" id="leadForm">
+            <div class="two">
+              <div>
+                <label for="name">Imię i nazwisko</label>
+                <input id="name" name="name" placeholder="np. Filip Zawartka" required>
+              </div>
+              <div>
+                <label for="city">Miasto</label>
+                <input id="city" name="city" placeholder="np. Warszawa" required>
+              </div>
+            </div>
+
+            <div class="two">
+              <div>
+                <label for="phone">Telefon</label>
+                <input id="phone" name="phone" placeholder="np. 517 149 045" required>
+              </div>
+              <div>
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="np. name@firma.pl" required>
+              </div>
+            </div>
+
+            <div class="two">
+              <div>
+                <label for="area">Powierzchnia szkła (m²)</label>
+                <input id="area" name="area" placeholder="np. 6" inputmode="decimal">
+              </div>
+              <div>
+                <label for="company">Firma (opcjonalnie)</label>
+                <input id="company" name="company" placeholder="np. CitySpace">
+              </div>
+            </div>
+
+            <div>
+              <label for="msg">Krótki opis</label>
+              <textarea id="msg" name="msg" placeholder="Gdzie jest szkło? Sala spotkań? Gabinet? Jakie wymiary? Czy jest dostęp do zasilania?"></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">Wyślij zapytanie</button>
+
+            <div class="notice">
+              Formularz otworzy Twoją aplikację e-mail (bez zapisu danych na serwerze). Jeśli chcesz prawdziwe wysyłanie online, podepniemy np. Formspree/Netlify Forms.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+    <div>© <span id="year"></span> MatON Foil</div>
+    <div class="muted">Prywatność na kliknięcie • #F8C954 • #113D53</div>
+  </div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Mobile menu (prosty)
+  const menuBtn = document.getElementById("menuBtn");
+  menuBtn?.addEventListener("click", () => {
+    alert("Menu: Jak działa, Korzyści, Zastosowania, Specyfikacja, FAQ, Kontakt.\nNa mobile przewiń stronę lub powiększ okno, a dodamy tu rozwijane menu.");
+  });
+
+  // Hero demo toggle
+  const demoSwitch = document.getElementById("demoSwitch");
+  const glassDemo = document.getElementById("glassDemo");
+  const demoState = document.getElementById("demoState");
+  const demoCaption = document.getElementById("demoCaption");
+
+  function setDemo(on){
+    demoSwitch.classList.toggle("on", on);
+    glassDemo.classList.toggle("on", on);
+    demoSwitch.setAttribute("aria-checked", String(on));
+    demoState.textContent = on ? "ON" : "OFF";
+    demoCaption.textContent = on ? "Tryb widoku: przejrzyste szkło" : "Tryb prywatności: mleczne szkło";
+  }
+  setDemo(false);
+
+  function toggleDemo(){
+    const isOn = demoSwitch.classList.contains("on");
+    setDemo(!isOn);
+  }
+  demoSwitch.addEventListener("click", toggleDemo);
+  demoSwitch.addEventListener("keydown", (e) => {
+    if(e.key === "Enter" || e.key === " "){
+      e.preventDefault();
+      toggleDemo();
+    }
+  });
+
+  // Before/After slider
+  const baRange = document.getElementById("baRange");
+  const baOverlay = document.getElementById("baOverlay");
+  function setBA(val){
+    // val 0..100 => opacity 0..1 (0 transparent, 1 frosted)
+    baOverlay.style.opacity = (val/100).toFixed(2);
+  }
+  setBA(Number(baRange.value));
+  baRange.addEventListener("input", (e) => setBA(Number(e.target.value)));
+
+  // Lead form -> mailto
+  const leadForm = document.getElementById("leadForm");
+  leadForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(leadForm).entries());
+
+    const subject = encodeURIComponent("Zapytanie o wycenę PDLC – MatON Foil");
+    const body = encodeURIComponent(
+`Dzień dobry,
+
+Proszę o wycenę montażu folii PDLC.
+
+Imię i nazwisko: ${data.name || "-"}
+Firma: ${data.company || "-"}
+Miasto: ${data.city || "-"}
+Telefon: ${data.phone || "-"}
+E-mail: ${data.email || "-"}
+Powierzchnia szkła (m²): ${data.area || "-"}
+
+Opis:
+${data.msg || "-"}
+
+Pozdrawiam,
+${data.name || ""}`
+    );
+
+    window.location.href = `mailto:matonfoil@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
 </body>
 </html>
