@@ -954,12 +954,18 @@
   const demoCaption = document.getElementById("demoCaption");
 
   function setDemo(on){
-    demoSwitch.classList.toggle("on", on);
-    glassDemo.classList.toggle("on", on);
-    demoSwitch.setAttribute("aria-checked", String(on));
-    demoState.textContent = on ? "ON" : "OFF";
-    demoCaption.textContent = on ? "Tryb widoku: przejrzyste szkło" : "Tryb prywatności: mleczne szkło";
+  demoSwitch.classList.toggle("on", on);
+  glassDemo.classList.toggle("on", on);
+  demoSwitch.setAttribute("aria-checked", String(on));
+  demoState.textContent = on ? "ON" : "OFF";
+  demoCaption.textContent = on ? "Tryb widoku: przejrzyste szkło" : "Tryb prywatności: mleczne szkło";
+
+  const photo = document.getElementById("glassPhoto");
+  if(photo){
+    photo.src = on ? "img/biuro-szklo-on.png" : "img/biuro-szklo-off.png";
   }
+}
+
   setDemo(false);
 
   function toggleDemo(){
